@@ -1,29 +1,46 @@
-//For each of these values, what type will the TypeScript compiler infer?
-//Number
-let a = 100;
-//String
-let b = "Coffee";
-//Boolean[]
-let c = [true, false, false];
-//{age: 20}
-let d = { age: 20 };
-//Number[]
-let e = [3];
-//Any
-let f;
-//Any[]
-let g = [];
+//Given the data below, define a type alias for representing users.
+type User = {
+	name: string;
+	age: number;
+	occupation?: string;
+};
 
-//What are the compilation errors in each of the following code snippets?
-//No releaseYear
-// let song: {
-// 	title: string,
-// 	releaseYear: number
-//  } = { title: 'My song' };
+let users: User[] = [
+	{
+		name: "John Smith",
+		age: 30,
+		occupation: "Software engineer",
+	},
+	{
+		name: "Kate Müller",
+		age: 28,
+	},
+];
 
-//Elements of array should be numbers
-// let prices = [100, 200, 300];
-// prices[0] = '$100';
+//Birds fly. Fish swim. A Pet can be a Bird or Fish. Use type aliases to represent these
+type Bird = {
+	fly: () => void;
+};
 
-//Function returns void instead of number
-// function myFunc(a: number, b: number): number { }
+type Fish = {
+	swim: () => void;
+};
+
+let Pet: Bird | Fish;
+
+//Define a type for representing the days of week. Valid values are “Monday”, “Tuesday”,
+//etc.
+
+type Days = "Monday" | "Tuesday" | "Wednesday" | "Thursday" | "Friday" | "Saturday" | "Sunday";
+
+//Simplify the following code snippets:
+// let user = getUser();
+// console.log(user?.address?.street);
+
+// let x =  foo ?? bar();
+
+//What is the problem in this piece of code?
+// let value: unknown = 'a';
+// console.log(value.toUpperCase());
+
+//Need to use type narrowing
