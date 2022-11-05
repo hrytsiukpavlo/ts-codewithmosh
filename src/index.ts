@@ -1,46 +1,54 @@
-//Given the data below, define a type alias for representing users.
-type User = {
+//Define a class called Logger that takes the name of a file in its constructor and provides
+//a method for writing messages to that file. Don’t worry about the actual file I/O
+//operations. Just define the class with the right members.
+
+class Logger {
 	name: string;
-	age: number;
-	occupation?: string;
-};
+	constructor(name: string) {
+		this.name = name;
+	}
 
-let users: User[] = [
-	{
-		name: "John Smith",
-		age: 30,
-		occupation: "Software engineer",
-	},
-	{
-		name: "Kate Müller",
-		age: 28,
-	},
-];
+	log(message: string) {}
+}
 
-//Birds fly. Fish swim. A Pet can be a Bird or Fish. Use type aliases to represent these
-type Bird = {
-	fly: () => void;
-};
+//Given the Person class below, create a getter for getting the full name of a person
+class Person {
+	constructor(public firstName: string, public lastName: string) {}
 
-type Fish = {
-	swim: () => void;
-};
+	get fullname() {
+		return `${this.firstName} ${this.lastName}`;
+	}
+}
 
-let Pet: Bird | Fish;
+//Create a new class called Employee that extends Person and adds a new property
+//called salary.
+class Employee extends Person {
+	constructor(firstName: string, lastName: string, public salary: number) {
+		super(firstName, lastName);
+	}
+}
 
-//Define a type for representing the days of week. Valid values are “Monday”, “Tuesday”,
-//etc.
+//What is the difference between private and protected members?
+//Protected is availiable in children
 
-type Days = "Monday" | "Tuesday" | "Wednesday" | "Thursday" | "Friday" | "Saturday" | "Sunday";
+//Given the data below, define an interface for representing employees:
 
-//Simplify the following code snippets:
-// let user = getUser();
-// console.log(user?.address?.street);
+// let employee = {
+// 	name: 'John Smith',
+// 	salary: 50_000,
+// 	address: {
+// 	street: 'Flinders st',
+// 	city: 'Melbourne',
+// 	zipCode: 3144,
+// 	},
+//  };
 
-// let x =  foo ?? bar();
-
-//What is the problem in this piece of code?
-// let value: unknown = 'a';
-// console.log(value.toUpperCase());
-
-//Need to use type narrowing
+interface Employee {
+	name: string;
+	salary: number;
+	address: {
+		street: string;
+		city: string;
+		zipCode: number;
+	};
+}
